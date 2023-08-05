@@ -1,3 +1,8 @@
+plugins:
+- ideavim
+- acejump
+- nord
+
 switch tab
 ctrl + tab
 
@@ -16,11 +21,15 @@ create new package
 find in files
 `ctrl + shift + n, /`
 
+
 find in files in a particular directory
 select a directory and then hit the combo `ctrl + shift + n, /`
 
 go to project view
 alt + 1
+
+go to console:
+alt + 4
 
 go to structure view (show all methods and properties in the current class)
 alt + 7
