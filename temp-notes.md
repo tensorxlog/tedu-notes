@@ -34,3 +34,12 @@ Maven项目中获取classpath目录：
 URI classpath = <ClassName>.class.getClassLoader().getResource(".").toURI();
 ```
 
+---
+一种控制反转的例子：
+DispatcherServlet中调用Controller的业务方法时不是在service方法中
+
+---
+HashMap知识点:
+底层数据结构
+添加元素和删除元素的机制（包括计算键值对对应的数组下标，equals方法，扩容，装载因子，rehash，链表，何时转为红黑树，何时从红黑树转为链表）
+当hashmap中容量达到64，链表长度达到8时会将链表转为红黑树，当红黑书长度降为6时变为链表。
