@@ -7,27 +7,6 @@ RunAsTask() ; self elevate
 #Persistent
 SetCapsLockState, AlwaysOff
 
-;Capslock & h::Send {Blind}{Left DownTemp}
-;Capslock & h up::Send {Blind}{Left Up}
-;Capslock & j::Send {Blind}{Down DownTemp}
-;Capslock & j up::Send {Blind}{Down Up}
-;Capslock & k::Send {Blind}{Up DownTemp}
-;Capslock & k up::Send {Blind}{Up Up}
-;Capslock & l::Send {Blind}{Right DownTemp}
-;Capslock & l up::Send {Blind}{Right Up}
-
-;Capslock & ,::SendInput {Blind}{Home Down}
-;Capslock & , up::SendInput {Blind}{Home Up}
-;Capslock & .::SendInput {Blind}{End Down}
-;Capslock & . up::SendInput {Blind}{End Up}
-
-;Capslock & Space::
-;If GetKeyState("CapsLock", "T") = 1
-;    SetCapsLockState, AlwaysOff
-;Else 
-;    SetCapsLockState, AlwaysOn
-;Return
-
 Capslock & h::Left
 Capslock & l::Right
 Capslock & k::Up
@@ -46,19 +25,9 @@ NumpadEnter::run, C:\Users\the_d\Desktop\sleep.bat
 ;;;;;;;;;;;;;;;; Windows snapping ;;;;;;;;;;;;;;;;
 Capslock & q::WinClose, A
 Capslock & Enter::activateapp("WindowsTerminal.exe", "C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.16.10262.0_x64__8wekyb3d8bbwe\wt.exe", 2061, 0, 1387, 1398)
-;Capslock & f::activateexplorer()
-;Capslock & f::activateapp("Files.exe", "C:\Users\the_d\AppData\Local\Microsoft\WindowsApps\files.exe", -8, 443, 1516, 955)
 Capslock & f::activateexplorer()
-;Capslock & b::activateapp("msedge.exe", "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe", 862, 0, 1716, 1398)
-Capslock & b::activateapp("firefox.exe", "C:\Program Files\Mozilla Firefox\firefox.exe", 862, 0, 1716, 1398)
-Capslock & c::activateapp("chrome.exe", "C:\Program Files\Google\Chrome\Application\chrome.exe", 862, 0, 1716, 1398)
-+#b::startapp("chrome.exe", "C:\Program Files\Google\Chrome\Application\chrome.exe", 862, 0, 1716, 1398)
-Capslock & z::activateapp("Obsidian.exe", "C:\Users\the_d\scoop\apps\obsidian\0.13.31\Obsidian.exe", 0, 0, 1720, 1390)
-Capslock & t::activateapp("Taskmgr.exe", "C:\Windows\System32\Taskmgr.exe", -8, 0, 1218, 1398)
-;Capslock & f::activateapp("firefox.exe", "C:\Program Files\Mozilla Firefox\firefox.exe", 1924, 220, 1522, 1176)
+Capslock & b::activateapp("gvim.exe", "C:\Program Files (x86)\Vim\vim90\gvim.exe")
 Capslock & \::activateapp("ubuntu.exe", "C:\Program Files\WindowsApps\CanonicalGroupLimited.Ubuntu_2204.1.6.0_x64__79rhkp1fndgsc\ubuntu.exe", 1096, 59, 1338, 1288)
-#j::activateapp("idea64.exe", "C:\Users\the_d\scoop\apps\idea\2021.3.3-213.7172.25\IDE\bin\idea64.exe", 758, 0, 1820, 1398, 5)
-Capslock & p::activateapp("Raindrop.io.exe", "C:\Users\the_d\AppData\Local\Raindrop\Raindrop.io.exe", 758, 0, 1820, 1398, 5)
 #e::activateexplorer()
 +#d::Run powershell -Command "C:'\Program Files (x86)\Internet Download Manager\IDMan.exe' /d $(Get-Clipboard)"
 Capslock & Space::F11

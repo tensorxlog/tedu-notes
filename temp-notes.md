@@ -43,3 +43,18 @@ HashMap知识点:
 底层数据结构
 添加元素和删除元素的机制（包括计算键值对对应的数组下标，equals方法，扩容，装载因子，rehash，链表，何时转为红黑树，何时从红黑树转为链表）
 当hashmap中容量达到64，链表长度达到8时会将链表转为红黑树，当红黑书长度降为6时变为链表。
+
+
+# java.util.concurrent
+## BlockingQueue
+接口，有界
+满了后负责生产的线程会发生阻塞，直到队列中有对象被消费掉；空了后负责消费的线程会发生阻塞，直到有对象被生产出来
+当请求的操作不能立刻执行时，BlockingQueue各个方法的表现如下：
+--- | --- | --- | --- | ---
+ | 抛异常 | 特定值 | 阻塞 | 超时等待
+插入 | add(o) | offer(o) | put(o) | offer(o, timeout, timeunit)
+移除 | remove(o) | poll(o) | take(o) | poll(timeout, timeunit)
+检查 | element(o) | peek(o) | |
+
+
+
