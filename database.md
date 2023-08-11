@@ -75,7 +75,25 @@ REFERENCES <主表名> 主键列1 [，主键列2，…]
 `select now()` (查看系统时间)
 `select user()` (查看当前用户)
 
-# where关键字
+# select
+
+```sql
+<select>
+<from>
+<join>
+<where>
+<group by>
+<having>
+<order by>
+<limit>
+```
+
+## join关键字
+
+`<table1> join <table2> on <condition>`
+
+## where关键字
+
 `where <condition1> and <condition2>`
 `where <col> = <val>`
 `where <col> >= <val>`
@@ -84,12 +102,109 @@ REFERENCES <主表名> 主键列1 [，主键列2，…]
 `where <col> between <val1> and <val2>`
 `where <col> like <wildcard>`
 
+## group by关键字
+
+`group by <col>`
+按指定列进行分组，以对每组使用聚合函数进行某些操作。和`partition by`不同，`group by`最后每组只显示一条记录。
+
+## having关键字
+
+`having <condition>`
+接在`group by`之后对分组后的结果进行额外的筛选。
+
+## order by关键字
+
+`order by <col1> [asc|desc], <col2> [asc|desc], ...`
+
+## limit关键字:
+
+`limit [<offset>,] <row-count>`
+`limit <row-count> offset <offset>`
+
+limit子句底层执行原理是先取出`offset + row_count`条记录,然后再将offset前面的记录扔掉，这里会存在一个性能问题(网上称之为深度分页问题),后续我们学了嵌套查询,多表关联查询时再解决这个问题.
+
 # union关键字
+
 `<select-sub1> union <select-sub2>`
 
-# order by关键字
-`order by <col1> [desc], <col2> [desc], ...`
+# 常用函数
 
+显示包含内置函数的表格(该表格似乎没有包含`sum`, `avg`之类的聚合函数，就只有一条"Aggregate Functions as Window Functions"):
+```sql
+use mysql;
+
+SELECT help_category.name as category, help_topic.name as function_name 
+FROM help_topic JOIN help_category 
+    ON help_category.help_category_id = help_topic.help_category_id 
+WHERE help_category.help_category_id IN (
+    SELECT help_category_id FROM help_category 
+    WHERE parent_category_id=37
+) ORDER BY 2;
+```
+
+## 不依赖于任何行的函数
+
+- `now()`
+- `current_timestamp()`
+
+## 标量函数(依赖于单行)
+
+- `lower(<col>)`: 将字母转为小写
+- `substr(<col>, <begin-index>)`: 获取字符子串
+- `concat(<col1>|<str1>, <col2>|<str2>, ...)`
+- `round(<col>[, <num>])`: 四舍五入，保留至`<num>`位小数
+- `floor(<col>)`: 向下取整
+- `ceiling(<col>)`: 向上取整
+- `year(<col>)`:
+
+
+## 聚合函数(依赖于多行且返回单个值)
+
+- `min(<col>)`: 求最小值
+- `max(<col>)`: 求最大值
+- `sum(<col>)`: 求和
+- `avg(<col>)`: 求平均值
+- `count(<col>)`: 统计非null行数
+
+## 窗口函数(依赖于多行且为每行单独返回一个值)
+
+- `rank() over (partition by <col1> order by <col2>[ desc])`:
+- `dense_rank() over (partition by <col1> order by <col2>[ desc])`:
+- `row_number() over (partition by <col1> order by <col2>[ desc])`:
+
+命名窗口:
+```sql
+select <window-function> over <window-name> from <table>
+window <window-name> as (partition by <col1> order by <col2>[ desc])
+```
+
+## 控制流函数
+
+- `ifnull(<expr1>, <expr2>)`: 如果`<expr1>`的结果不为null，则返回它的值，否则返回`<expr2>`的值。
+- `if(<condition>, <expr1>, <expr2>)`: 如果`<condition>`成立，则返回`<expr1>`，否则返回`<expr2>`。
+- case语句:
+```sql
+case when <condition1> then
+    <expr1>
+when <condition2> then
+    <expr2>
+...
+else
+    <exprn>
+end
+```
+
+# 多表关联查询
+
+内联(只显示双方都有的记录):
+`<table1> [inner ]join <table2> on <condition>`
+
+左外联(左边表格的记录都显示，右边表格不满足条件的记录显示为null):
+`<table1> left [outer ]join <table2> on <condition>`
+右外联(右边表格的记录都显示，左边表格不满足条件的记录显示为null):
+`<table1> right [outer ]join <table2> on <condition>`
+
+# NoName
 
 查看创建语句：
 
@@ -100,4 +215,5 @@ show create table <table>
 
 查看数据库支持的字符集:
 `show character set like '%utf8%'`
+
 
