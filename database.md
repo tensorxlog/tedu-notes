@@ -31,7 +31,14 @@ comment [=] 'comment'
 create table <table> 
 (
   字段名1 字段类型 [字段约束] [注释],
-  字段名2 字段类型 [字段约束] [注释]
+  字段名2 字段类型 [字段约束] [注释],
+
+  primary key (<col1>),
+
+  index <index1> (<col2>),
+  unique index <index2> (<col3>)
+
+
 );
 ```
 
@@ -216,4 +223,42 @@ show create table <table>
 查看数据库支持的字符集:
 `show character set like '%utf8%'`
 
+查看表所包含的索引：
+`show index from <table>`
+
+修改表时添加索引：
+`alter table <table> add index <index> (<col>)`
+修改表时去掉索引：
+`alter table <table> drop index <index>`
+`drop index <index> on <table>`
+
+查看当前事务提交模式：
+`show variables like '%autocommit%';`
+
+设置事务提交模式为手动：
+`set autocommit=0;`
+设置事务提交模式为自动：
+`set autocommit=1;`
+
+手动提交事务的语法：
+```sql
+set autocommit=0;
+begin;
+<statements1>
+savepoint p;
+<statements2>
+rollback to p;
+<statements3>
+rollback;
+commit;
+```
+
+
+# View (视图)
+
+视图是某条查询语句所对应的虚拟表，它本身只存储由查询语句所确定的表结构，而不存储数据，只有在调用视图进行查询时才会从真实的表中实时请求数据。
+
+视图的作用:
+- 在复杂查询中简化SQL语句的编写
+- 对外不直接暴露表的操作,提高表的安全性
 

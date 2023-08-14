@@ -47,8 +47,8 @@ HashMap知识点:
 
 # java.util.concurrent
 ## BlockingQueue
-接口，有界
-满了后负责生产的线程会发生阻塞，直到队列中有对象被消费掉；空了后负责消费的线程会发生阻塞，直到有对象被生产出来
+BlockingQueue接口表示线程放入和取出元素的队列。通常用于一个线程生产对象，另一个线程消费对象的场景。队列满了后负责生产的线程会发生阻塞，直到队列中有对象被消费掉；空了后负责消费的线程会发生阻塞，直到有对象被生产出来
+
 当请求的操作不能立刻执行时，BlockingQueue各个方法的表现如下：
 --- | --- | --- | --- | ---
  | 抛异常 | 特定值 | 阻塞 | 超时等待
@@ -56,6 +56,20 @@ HashMap知识点:
 移除 | remove(o) | poll(o) | take(o) | poll(timeout, timeunit)
 检查 | element(o) | peek(o) | |
 
+BlockingQueue的实现类：
+- ArrayBlockingQueue (内部使用数组来存储，有界)
+- DelayQueue
+- LinkedBlockingQueue (内部使用链表来存储，可以设定初始值，如果不设定，长度默认为`Integer.MAX_VALUE`)
+- PriorityBlockingQueue (无界队列，底层数据结构是数组，但是用到了平衡二叉树的算法？其元素需要实现Comparable接口，排序取决于Comparable实现，对于优先级相同的元素，其顺序没有特定规律；使用其Iterator来遍历时遍历的顺序不一定和队列中元素的排序相同)
+- SynchronousBlockingQueue (内部只能存储单个元素)
+
+## ConcurrentMap
+
+ConcurrentMap是可以进行并发读写的Map，它是一个接口，其实现类ConcurrentHashMap和HashTable类似，但是在读写时只会锁住读写的部分，所以效率比HahsTable高。在使用迭代器遍历时，即使ConcurrentHashMap被改动，也不会报ConcurrentModificationExceptin
+
+
+
+特定值通常是true/false
 ---
 使用Socket发送数据时数据会缓存到网卡里(大概几MB缓存？)，所以即使服务端没有读取数据，客户端也可以发送数据，但当达到缓存最大值时，就会产生阻塞。同样的，如果客户端没有发送数据，网卡缓存是空的，那么服务端在读取时会产生阻塞。
 
