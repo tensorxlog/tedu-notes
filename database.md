@@ -253,6 +253,11 @@ rollback;
 commit;
 ```
 
+查询当前会话中事务的隔离级别：
+`select @@tx_isolation;`
+隔离级别设置为提交读：
+`set tx_isolation='read-committed'`
+
 
 # View (视图)
 

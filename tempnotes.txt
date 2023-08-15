@@ -7,3 +7,13 @@
 Maven项目中的src/main下有两个路径：java和resources，前者保存所有包和java文件，后者保存其他文件。在编译后java和resources下的文件会合并保存到target/classes路径下。
 
 
+---
+`nio/Demo01.java`
+
+GY:
+遍历SelectionKey，根据事件类型来进行相应的操作(ACCEPT, WRITE, READ操作)
+
+DT:
+使用Selector来选出准备好的channels，将它们交给GY方法来处理
+
+
