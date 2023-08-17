@@ -165,6 +165,7 @@ Vim中设置`let g:NERDTreeChDirMode = 2`会使得在nerdtree中进入某个路�
 - m: show operations for the selected node
     - o: open with default program
     - r: reveal in file manager
+    - m: rename (or move)
     - d: delete
     - p: copy path
     - q: quick-look
@@ -227,3 +228,62 @@ Check out:
 Check out" refers to the process of retrieving a specific version of a file or a set of files from a repository. It involves copying the files from the repository to your working directory so that you can work on or examine that particular version.
 
 We can check out a branch: `git checkout <branch>`, or check out a commit: `git checkout <commit-hash>`, or check out a file: `git checkout <commit-hash> -- <filename>`.
+
+---
+Intellij Idea中，module的设置存储在.iml文件中。
+
+某个module所依赖的JDK版本以及jar包都罗列在`Project Structure (cmd + ;) - Modules - Dependencies`下面，有时候由于pom.xml没有被识别，idea没有将pom.xml中指定的依赖添加到classpath中，这时候可以右键pom.xml文件，选择"add as maven project"。
+
+在`Project Structure (cmd + ;) - Modules - Sources`中可以指定module的language level，即编辑器的代码辅助功能相关设置（一般应该要跟JDK版本保持一致吧？）。
+
+---
+Maven是一个Java项目的管理和构建工具，在Maven中声明一个依赖项(由groupId，artifactId和version唯一定位)可以自动下载并导入classpath。
+
+Maven项目结构:
+
+maven-project
+├── pom.xml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   └── resources
+│   └── test
+│       ├── java
+│       └── resources
+└── target
+
+其中pom.xml类似于下面这样：
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>{group-id}</groupId>
+    <artifactId>{artifact-id}</artifactId>
+    <version>{version}</version>
+
+    <name>{project-name}</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+    </dependencies>
+</project>
+```
+其中，groupId类似于Java的包名，通常是公司或组织名称，artifactId类似于Java的类名，通常是项目名称，再加上version，一个Maven工程就是由groupId，artifactId和version作为唯一标识。我们在引用其他第三方库的时候，也是通过这3个变量确定。
+
+在依赖项的`<scope></scope>`中可以指定什么时候使用依赖：
+- compile: 编译时需要用到该jar包（默认）
+- runtime: 编译时不需要，但运行时需要用到
+- test: 编译Test时需要用到该jar包
+- provided: 编译时需要用到，但运行时不需要(因为运行时由JDK或某个服务器提供)
