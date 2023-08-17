@@ -211,6 +211,31 @@ end
 右外联(右边表格的记录都显示，左边表格不满足条件的记录显示为null):
 `<table1> right [outer ]join <table2> on <condition>`
 
+# 嵌套查询
+
+子查询可接在以下关键字之后:
+- select
+- from
+- where
+- having
+- ...
+
+# View (视图)
+
+视图是某条查询语句所对应的虚拟表，它本身只存储由查询语句所确定的表结构，而不存储数据，只有在调用视图进行查询时才会从真实的表中实时请求数据。视图可以像普通表格一样被调用。
+
+视图的作用:
+- 在复杂查询中简化SQL语句的编写
+- 对外不直接暴露表的操作,提高表的安全性
+
+创建视图:
+`create view <view-name> as <query-statement>`
+
+删除视图:
+`drop view <view-name>`
+
+
+
 # NoName
 
 查看创建语句：
@@ -225,7 +250,13 @@ show create table <table>
 
 查看表所包含的索引：
 `show index from <table>`
-
+创建表时添加索引:
+```sql
+create table <table> (
+    ......
+    index <index-name> (<col>);
+);
+```
 修改表时添加索引：
 `alter table <table> add index <index> (<col>)`
 修改表时去掉索引：
@@ -243,7 +274,7 @@ show create table <table>
 手动提交事务的语法：
 ```sql
 set autocommit=0;
-begin;
+begin [transaction];
 <statements1>
 savepoint p;
 <statements2>
@@ -258,12 +289,4 @@ commit;
 隔离级别设置为提交读：
 `set tx_isolation='read-committed'`
 
-
-# View (视图)
-
-视图是某条查询语句所对应的虚拟表，它本身只存储由查询语句所确定的表结构，而不存储数据，只有在调用视图进行查询时才会从真实的表中实时请求数据。
-
-视图的作用:
-- 在复杂查询中简化SQL语句的编写
-- 对外不直接暴露表的操作,提高表的安全性
 

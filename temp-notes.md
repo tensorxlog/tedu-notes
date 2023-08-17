@@ -1,4 +1,31 @@
 ---
+猎才MySQL文档URL：
+https://yscp0bp3g6.feishu.cn/docx/Dv0kdkOmdofUhDx53VNch8mpnHg
+https://gitee.com/houyworking/mysqlproject/tree/master
+
+---
+lie-cai code temp:
+
+`nio/Demo01.java`
+
+GY:
+遍历SelectionKey，根据事件类型来进行相应的操作(ACCEPT, WRITE, READ操作)
+
+DT:
+使用Selector来选出准备好的channels，将它们交给GY方法来处理
+
+
+---
+jdk1.8之后arraylist初始容量变为0，第一次添加才增加到10
+
+"./"表示项目的根目录
+
+类加载路径（classpath）是以当前类（class文件）为依据，定位的是当前类所在包的最上级包的上一级路径。
+
+Maven项目中的src/main下有两个路径：java和resources，前者保存所有包和java文件，后者保存其他文件。在编译后java和resources下的文件会合并保存到target/classes路径下。
+
+
+---
 使用asList将数组转为List时，对该List元素进行操作其实就是对于原数组进行操作。因此不能对该List添加元素，不然会报"UnsupportedOperationException"。
 
 其实这样得到的ArrayList只是Arrays的一个内部类，为了将其转为通常的ArrayList，可以使用 `new ArrayList<String>(Arrays.asList(...)))`来获得。
@@ -84,3 +111,48 @@ usage: first visual-select the sql statements in the current file, then execute 
 
 ---
 由于数据库连接底层使用TCP协议，所以连接时会有三次握手。
+
+---
+将component或是controller、service等打上注解后利用ApplicationContext的getBean方法获得Bean的原理是什么
+
+---
+Maven优先从本地仓库查找jar包，找不到时从远程仓库拉取。有时候本地仓库由于网路等原因下载下的是不完整的结果，导致JVM找不到某些class文件，这时候将其删了重新下载即可。
+
+Maven的配置路径为`C:\Users\Administrator\.m2\settings.xml`或者`C\Users\<username>\.m2\settings.xml`。
+
+在`settings.xml`的`<localRepository>...</localRepository>`中可以配置本地仓库路径，在Idea的`Settings - Build, Execution, Depoloyment - Maven`中可以更改所使用的Maven的settings.xml配置文件以及其本地仓库的位置。
+
+---
+Vim中设置`let g:NERDTreeChDirMode = 2`会使得在nerdtree中进入某个路径时working directory也相应变化。这对于更新git项目是有用的，因为可以先使用快捷键定位到projects文件夹，然后使用nerdtree打开某个项目文件来更改working directory，然后打开terminal就可以在项目路径下进行操作。
+
+---
+nerdtree shortcuts:
+- i: open split
+- s: open vsplit
+- `<CR>`: custom open
+- o: open or close the directory node
+- O: recursively open the directory node
+- t: open the directory node in new tab
+
+---
+为什么使用`ApplicationContext context = new AnnotationConfigApplicationContext("cn.tedu.spring");`(而非`ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);`)来创建ApplicationContext也会创建SpringConfig?
+
+---
+测试依赖注入是否只能注入singleton作用域的bean
+
+---
+最大连接数：
+`show variables like '%max_connections%';`
+`set global max_connections=160;`
+
+是否支持缓存
+`show variables like '%have_query_cache%';`
+是否开启缓存
+`show variables like '%query_cache_type%';`
+
+查看数据库支持的引擎：
+`show engines;`
+修改表使用的引擎
+`alter table <table> engine=<engine>;`
+
+
