@@ -133,6 +133,11 @@ Vim中设置`let g:NERDTreeChDirMode = 2`会使得在nerdtree中进入某个路�
 - 然后选中目标project并使用快捷键cd将其设为working directory
 - 然后按q关闭nerdtree，再打开内置terminal即可。
 
+还有一个在当前文件路径下打开terminal的vim设置：
+`map <C-S-CR> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>`
+
+类似于Ranger的LF似乎可以在Windows上面安装： https://github.com/gokcehan/lf
+
 ## nerdtree shortcuts:
 
 ### navigation
@@ -157,7 +162,13 @@ Vim中设置`let g:NERDTreeChDirMode = 2`会使得在nerdtree中进入某个路�
 ### miscellaneous
 
 - F: toggle show only directories
-- m: show operations
+- m: show operations for the selected node
+    - o: open with default program
+    - r: reveal in file manager
+    - d: delete
+    - p: copy path
+    - q: quick-look
+    - l: show file info
 - B: show/hide bookmarks
 - D: delete bookmark
 - Bookmark <bookmark-name>: bookmark the selected node
@@ -193,3 +204,26 @@ Vim中设置`let g:NERDTreeChDirMode = 2`会使得在nerdtree中进入某个路�
 `alter table <table> engine=<engine>;`
 
 
+---
+show open ports using cmd:
+`netstat -ano | findstr LISTENING`
+using powershell:
+`Get-NetTCPConnection | Where-Object { $_.State -eq "Listen" }`
+
+
+---
+Concepts in git:
+
+Working directory:
+
+Working directory is the local copy of the repository that one interacts with directly. When he edits files, add new ones, or delete existing ones, these changes are made in the working directory, but not automatically tracked by Git for inclusion in the next commit.
+
+Staging area (index):
+
+The staging area is an intermediate step between the working directory and a commit, which is like a snapshot of what the next commit will look like.
+
+Check out:
+
+Check out" refers to the process of retrieving a specific version of a file or a set of files from a repository. It involves copying the files from the repository to your working directory so that you can work on or examine that particular version.
+
+We can check out a branch: `git checkout <branch>`, or check out a commit: `git checkout <commit-hash>`, or check out a file: `git checkout <commit-hash> -- <filename>`.
