@@ -1,0 +1,205 @@
+#---------------------------------------------------#
+## 配置文件需要放置在 $HOME/.config/clash/*.yaml
+
+## 这份文件是clashX的基础配置文件，请尽量新建配置文件进行修改。
+## 端口设置请在 菜单条图标->配置->更多配置 中进行修改
+
+## 如果您不知道如何操作，请参阅 官方Github文档 https://dreamacro.github.io/clash/
+#---------------------------------------------------#
+
+mode: rule
+log-level: info
+
+proxies:
+  - name: jms-c62s1 
+    type: ss
+    server: c62s1.jamjams3.net
+    port: 26908
+    cipher: aes-256-gcm
+    password: DEVzPc8zmJrepZWt
+    udp: true
+
+  - name: jms-c62s2 
+    type: ss
+    server: c62s2.jamjams3.net
+    port: 26908
+    cipher: aes-256-gcm
+    password: DEVzPc8zmJrepZWt
+    udp: true
+
+  - name: jms-c62s3
+    type: vmess
+    server: c62s3.jamjams3.net
+    port: 26908
+    uuid: ed2d1d19-28a1-4912-8069-5ef3f7d562b6
+    alterId: 0
+    cipher: auto
+    udp: false
+
+  - name: jms-c62s4
+    type: vmess
+    server: c62s4.jamjams3.net
+    port: 26908
+    uuid: ed2d1d19-28a1-4912-8069-5ef3f7d562b6
+    alterId: 0
+    cipher: auto
+    udp: false
+
+  - name: jms-c62s5
+    type: vmess
+    server: c62s5.jamjams3.net
+    port: 26908
+    uuid: ed2d1d19-28a1-4912-8069-5ef3f7d562b6
+    alterId: 0
+    cipher: auto
+    udp: false
+
+  - name: jms-c62s801
+    type: vmess
+    server: c62s801.jamjams3.net
+    port: 26908
+    uuid: ed2d1d19-28a1-4912-8069-5ef3f7d562b6
+    alterId: 0
+    cipher: auto
+    udp: false
+
+proxy-groups:
+  - name: "PROXY"
+    type: url-test
+    proxies:
+      - jms-c62s1
+      - jms-c62s2
+      - jms-c62s3
+      - jms-c62s4
+      - jms-c62s5
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 300
+   #tolerance: 50
+   #lazy: true
+   #disable-udp: true
+
+      #  - name: 🇬🇧_GB_英国_3_21@33_8@532
+      #    cipher: auto
+      #    password: shadowsocks
+      #    port: 443
+      #    server: 212.102.53.196
+      #    type: ss
+
+      #proxy-groups:
+      #  - name: Proxy
+      #    type: select
+      #    proxies:
+      #      - Shadowsocks
+
+
+
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,injections.adguard.org,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,DIRECT
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,PROXY
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY

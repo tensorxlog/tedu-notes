@@ -122,17 +122,54 @@ Maven的配置路径为`C:\Users\Administrator\.m2\settings.xml`或者`C\Users\<
 
 在`settings.xml`的`<localRepository>...</localRepository>`中可以配置本地仓库路径，在Idea的`Settings - Build, Execution, Depoloyment - Maven`中可以更改所使用的Maven的settings.xml配置文件以及其本地仓库的位置。
 
----
+# NERDTree
+
 Vim中设置`let g:NERDTreeChDirMode = 2`会使得在nerdtree中进入某个路径时working directory也相应变化。这对于更新git项目是有用的，因为可以先使用快捷键定位到projects文件夹，然后使用nerdtree打开某个项目文件来更改working directory，然后打开terminal就可以在项目路径下进行操作。
 
 ---
-nerdtree shortcuts:
+改进操作：
+在内置terminal中cd到某个项目的路径：
+- 先在nerdtree中通过bookmark进入projects路径
+- 然后选中目标project并使用快捷键cd将其设为working directory
+- 然后按q关闭nerdtree，再打开内置terminal即可。
+
+## nerdtree shortcuts:
+
+### navigation
+
+- P: go to root (the directory shown at the top)
+- p: go to parent
+- CD: go to working directory
+- cd: set the selected directory as working directory
+- C: set the selected directory as root
+- J: go to the last sibling
+- K: go to the first sibling
+
+### open file
+
+- o: open file
+- go: open file (silently)
 - i: open split
+- gi: open split (silently)
 - s: open vsplit
-- `<CR>`: custom open
+- gs: open vsplit (silently)
+
+### miscellaneous
+
+- F: toggle show only directories
+- m: show operations
+- B: show/hide bookmarks
+- D: delete bookmark
+- Bookmark <bookmark-name>: bookmark the selected node
+- u: move root up a directory
+- I: toggle hidden files
+- e: explore selected directory
 - o: open or close the directory node
 - O: recursively open the directory node
-- t: open the directory node in new tab
+- t: open the selected file in new tab
+- R: refresh current root
+- r: refresh current directory
+- A: maximize/minimize the nerdtree window
 
 ---
 为什么使用`ApplicationContext context = new AnnotationConfigApplicationContext("cn.tedu.spring");`(而非`ApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);`)来创建ApplicationContext也会创建SpringConfig?
