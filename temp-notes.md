@@ -3,6 +3,12 @@
 https://yscp0bp3g6.feishu.cn/docx/Dv0kdkOmdofUhDx53VNch8mpnHg
 https://gitee.com/houyworking/mysqlproject/tree/master
 
+SSM teacher:
+https://gitee.com/teduwang/jsd2306-ssm-teacher
+截图软件：
+Snipaste
+
+
 ---
 lie-cai code temp:
 
@@ -287,3 +293,17 @@ maven-project
 - runtime: 编译时不需要，但运行时需要用到
 - test: 编译Test时需要用到该jar包
 - provided: 编译时需要用到，但运行时不需要(因为运行时由JDK或某个服务器提供)
+
+---
+SQL和Java数据类型的对比：
+SQL数据类型 | Java数据类型
+--- | --- 
+BIT, BOOL | boolean
+INTEGER | int
+BIGINT | long
+REAL | float
+FLOAT, DOUBLE | double
+CHAR, VARCHAR | String
+DECIMAL | BigDecimal
+DATE | java.sql.Date, LocalDate
+TIME | java.sql.Time, LocalTime

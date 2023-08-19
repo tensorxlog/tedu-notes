@@ -39,6 +39,9 @@ alt + 4
 go to structure view (show all methods and properties in the current class)
 alt + 7
 
+将选中语句自动格式化：
+`ctrl + alt + l`
+
 # Vim
 
 搜索当前缓冲区中的文件时，如果都是projects目录下的文件，那么直接搜索项目名称即可。如果搜索某个笔记，那么搜索`'note`关键词即可。
