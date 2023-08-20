@@ -307,3 +307,18 @@ CHAR, VARCHAR | String
 DECIMAL | BigDecimal
 DATE | java.sql.Date, LocalDate
 TIME | java.sql.Time, LocalTime
+
+---
+Mybatis常见异常：
+
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found)
+该异常指明Mybatis在调用Mapper接口中的某个方法时找不到xml文件中相应的sql语句，一些可能的原因如下:
+- application.properties中mybatis.mapper-locations属性配置错误
+- xml文件中的namespace错了
+- xml文件中sql语句所对应的id跟接口中的方法名不一致
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]
+该异常跟xml文件的语法错误有关，一些可能的原因如下:
+- resultType类型错误 (注意，要写类的全限定名或基本类型)，此时在错误信息中向下找可以找到`ClassNotFoundException`，并找到产生错误的类
+- sql的id重复，此时可以在错误信息中找到IllegalArgumentException并找到出错的id
+其他可能的原因还有很多，但最终可定位的出错原因似乎都在错误信息的最下方，因此直接拉到最下面即可。
