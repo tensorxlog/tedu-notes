@@ -1,7 +1,14 @@
 ---
 猎才MySQL文档URL：
 https://yscp0bp3g6.feishu.cn/docx/Dv0kdkOmdofUhDx53VNch8mpnHg
+https://it38nc4nte.feishu.cn/docx/SbB1dOAaJofDS2xHPPMcmyEWnEc
 https://gitee.com/houyworking/mysqlproject/tree/master
+
+MySQL:
+undo log, redo log, bin log
+MVCC
+SQL: union / union all
+
 
 SSM teacher:
 https://gitee.com/teduwang/jsd2306-ssm-teacher
