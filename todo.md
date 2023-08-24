@@ -2,7 +2,7 @@
 
 - 理解springmvc的执行流程;Bean生命周期
 - 熟悉SpringMVC和MyBatis项目的编写流程
-- 熟悉mini HTTP服务器的整个项目结构
+- 熟悉mini HTTP服务器的整个项目结构(并理解它与springmvc执行流程的关系)
 - 整理数据库和Spring笔记(mysql.xmind, ssm.xmind, 检查思维导图中每一条是否完善，有时间时检查思维导图是否已包含所有知识点)
 - 看猎才mysql文档
 - 理解NIO: Channel，Selector，如何连接，发送和接收
@@ -25,3 +25,12 @@ HandlerExecutionChain包含一个handler以及多个拦截器构成的执行链�
 拦截器可以在请求被handler处理前进行预处理或者请求被handler处理后进行额外处理，其进行的处理包括授权，日志记录以及修改请求和响应等。
 
 HandlerAdapter使用了适配器模式，它有几个子类，每个子类都是适配某一种类型的控制器，有了HandlerAdapter，你只需要调用handle方法，屏蔽了不一致的细节，否则在DispatcherServlet里面要if else if else了
+
+
+HandlerMapping根据请求路径找到handler（handler method?）然后将执行链返回给DispatcherServlet，但由于有多种多样的handler，调用它们的接口各不相同，所以并不是由DispatcherServlet直接调用handler的方法，而是使用了适配器模式，为每种handler定义一个HandlerAdapter适配器，于是DispatcherServlet根据handler的类型找到合适的HandlerAdapter来执行handler。
+
+View接口使用render来渲染页面：
+void render(@Nullable Map<String,?> model, HttpServletRequest request, HttpServletResponse response)
+
+ModelAndView中封装了view以及Map<String, ?>类型的model
+
