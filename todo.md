@@ -1,7 +1,6 @@
 ﻿# to-do:
 
-- 理解springmvc的执行流程;Bean生命周期
-- 熟悉SpringMVC和MyBatis项目的编写流程
+- 理解Bean生命周期
 - 熟悉mini HTTP服务器的整个项目结构(并理解它与springmvc执行流程的关系)
 - 整理数据库和Spring笔记(mysql.xmind, ssm.xmind, 检查思维导图中每一条是否完善，有时间时检查思维导图是否已包含所有知识点)
 - 看猎才mysql文档
