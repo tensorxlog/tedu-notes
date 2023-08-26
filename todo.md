@@ -1,4 +1,4 @@
-﻿# to-do:
+# to-do:
 
 - 理解Bean生命周期
 - 熟悉mini HTTP服务器的整个项目结构(并理解它与springmvc执行流程的关系)
@@ -12,6 +12,8 @@
 - 熟练使用代码实现各种排序算法
 - 使用嵌套循环和外联内联的不同场合
 - k8s
+
+test gitviewer
 
 temp
 ---
