@@ -1,9 +1,19 @@
 # to-do:
 
+- 为什么需要redo log来恢复物理数据页，而不能只用binlog来恢复，除了效率问题之外有其他原因吗？
+- 看猎才mysql文档
+- ConcurrentHashMap的源码
+- MySQL优化
+- 彻底理解索引的原理
+- 如何解释三次握手和四次挥手
 - 理解Bean生命周期
 - 熟悉mini HTTP服务器的整个项目结构(并理解它与springmvc执行流程的关系)
+- 看完这一页：https://mybatis.org/mybatis-3/zh/dynamic-sql.html
+- log4j, slf4j的区别
+- Spring @ControllerAdvice, @ExceptionHandler的原理
+- Spring controller接受各种类型参数提取请求参数的原理
+- Exception.getFieldError().getDefaultMessage()?
 - 整理数据库和Spring笔记(mysql.xmind, ssm.xmind, 检查思维导图中每一条是否完善，有时间时检查思维导图是否已包含所有知识点)
-- 看猎才mysql文档
 - 理解NIO: Channel，Selector，如何连接，发送和接收
 - 熟悉RPC代码
 - 看廖雪峰网站上JDBC相关补充至思维导图
@@ -13,7 +23,24 @@
 - 使用嵌套循环和外联内联的不同场合
 - k8s
 
-test gitviewer
+---
+MySQL数据库技术
+https://yscp0bp3g6.feishu.cn/docx/Dv0kdkOmdofUhDx53VNch8mpnHg
+
+数据库MySQL运维
+https://gitee.com/houyworking/mysqlproject
+
+MySQL MVCC课程设计
+https://it38nc4nte.feishu.cn/docx/SbB1dOAaJofDS2xHPPMcmyEWnEc
+
+Spring
+https://it38nc4nte.feishu.cn/docx/H6VzdpNvHo0lutxqraWcBKVBnNd
+
+工作项目峰会参考
+https://it38nc4nte.feishu.cn/docx/KYgzdjpggolIBuxCdtMc4II2nmc
+
+Arthas使用说明
+https://it38nc4nte.feishu.cn/docx/Vow3dkjxwoZSODxclwsc6Ur6nqg
 
 temp
 ---
