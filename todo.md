@@ -24,6 +24,10 @@
 - k8s
 
 ---
+mysql manual:
+https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html
+
+---
 MySQL数据库技术
 https://yscp0bp3g6.feishu.cn/docx/Dv0kdkOmdofUhDx53VNch8mpnHg
 
@@ -41,6 +45,9 @@ https://it38nc4nte.feishu.cn/docx/KYgzdjpggolIBuxCdtMc4II2nmc
 
 Arthas使用说明
 https://it38nc4nte.feishu.cn/docx/Vow3dkjxwoZSODxclwsc6Ur6nqg
+
+前端课程repository:
+https://gitee.com/IvanLiuGB/jsd-06-03-teacher.git
 
 temp
 ---
