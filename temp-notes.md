@@ -329,3 +329,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 - resultType类型错误 (注意，要写类的全限定名或基本类型)，此时在错误信息中向下找可以找到`ClassNotFoundException`，并找到产生错误的类
 - sql的id重复，此时可以在错误信息中找到IllegalArgumentException并找到出错的id
 其他可能的原因还有很多，但最终可定位的出错原因似乎都在错误信息的最下方，因此直接拉到最下面即可。
+
+---
+Spring框架的好处：
+- 可以自动创建对象，维护对象之间的依赖关系。项目中往往涉及到很多只需要单个实例的对象，如果手动，比如说，使用单例模式去创建，就太不方便了，也难以维护。
