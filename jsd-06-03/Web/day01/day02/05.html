@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>外边距</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+    }
+    #d1 {
+      margin: 50px 20px 30px 50px;
+    }
+    #d2 {
+      margin-left: 50px;
+      margin-top: 0px;
+    }
+    #s1 {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    #s2 {
+      margin-left: 20px;
+    }
+    #big {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      margin-top: 50px;
+    }
+    #big>div {
+      width: 50px;
+      height: 50px;
+      background-color: blue;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+<div id="d1">div1</div>
+<div id="d2">div2</div>
+<span id="s1">span1</span><span id="s2">span2</span>
+<div id="big">
+  <div></div>
+</div>
+</body>
+</html>

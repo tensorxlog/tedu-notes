@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+  <style>
+    #id1 {
+      color: red;
+    }
+    .testclass {
+      color: green;
+    }
+    h1, #id1, .testclass {
+      background-color: aqua;
+    }
+    input[type="text"] {
+        background-color: green;
+    }
+    * {
+        border: 1px solid blue;
+    }
+  </style>
+</head>
+<body>
+<h1>test</h1>
+<p id="id1">
+  test
+</p>
+<p class="testclass">test</p>
+<p class="testclass">test</p>
+<input type="text" value="this is a text input">
+</body>
+</html>
