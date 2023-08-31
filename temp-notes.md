@@ -333,3 +333,7 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 ---
 Spring框架的好处：
 - 可以自动创建对象，维护对象之间的依赖关系。项目中往往涉及到很多只需要单个实例的对象，如果手动，比如说，使用单例模式去创建，就太不方便了，也难以维护。
+
+---
+使git正确显示中文：
+`$ git config --global core.quotepath false`
