@@ -4,6 +4,9 @@ https://yscp0bp3g6.feishu.cn/docx/Dv0kdkOmdofUhDx53VNch8mpnHg
 https://it38nc4nte.feishu.cn/docx/SbB1dOAaJofDS2xHPPMcmyEWnEc
 https://gitee.com/houyworking/mysqlproject/tree/master
 
+Spring:
+https://gitee.com/houyworking/JSD2306spring6
+
 MySQL:
 undo log, redo log, bin log
 MVCC
@@ -15,6 +18,7 @@ https://gitee.com/teduwang/jsd2306-ssm-teacher
 截图软件：
 Snipaste
 
+https://gitee.com/IvanLiuGB/jsd-06-weibo.git
 
 ---
 lie-cai code temp:
@@ -337,3 +341,90 @@ Spring框架的好处：
 ---
 使git正确显示中文：
 `$ git config --global core.quotepath false`
+
+---
+Replacement within visual selection:
+`:'<,'>s/\%V{pattern}/{replacement}/g`
+
+---
+Dash shortcuts:
+opt + up/down: navigate through table of contents (also, we can use cmd + f to search in toc)
+
+---
+list available services in brew:
+`brew services list`
+
+---
+idea snipet: vdata for 
+`
+data() {
+    return {
+        ...
+    }
+}
+`
+---
+How to use UltiSnips:
+After installing the vim plugin, create the directory `~/.vim/UltiSnips`, then open a file with the target type and use the command `UltiSnipsEdit` to open the configuration file for the this file type.
+
+---
+Show dns resolvers used by the system:
+`scutil --dns`
+
+---
+rename tab in iTerm2:
+cmd + i, type the name, esc
+
+---
+htop shortcuts:
+
+- P: sort by cpu usage
+- M: sort by memory usage
+- u: filter processes owned by a particular user
+- space: tag a process
+- c: tag a process and its child processes
+- U: remove all tags
+- F: highlight and follow a process
+
+---
+docker:
+install docker image:
+`docker pull centos`
+run centos container:
+`docker run -it centos`
+exit container:
+`exit`
+remove container:
+`docker rm <container_id_or_name>`
+
+Docker中安装完CentOS 8后的配置:
+```
+cd /etc/yum.repos.d/
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+yum -y install  epel-release
+```
+
+---
+为文件名或其他用途生成随机字符串：
+```java
+UUID.randomUUID()
+```
+
+格式化日期：
+```java
+new SimpleDateFormat("/yyyy/MM/dd/")
+```
+
+---
+对于上传的图片，spring mvc可以用MultipartFile类型来接收，常用方法
+- `String getOriginalFilename()`: 返回文件在客户端的文件系统上的名称
+- `void transferTo(File dest)`: 将接收到的文件保存到本地
+
+---
+常见难发现bug之一：
+变量名错写成一个非常类似的名称
+
+---
+mac自定快捷键：
+合并所有窗口: ctrl + shift + cmd + u

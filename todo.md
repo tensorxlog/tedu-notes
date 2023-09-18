@@ -1,5 +1,12 @@
 # to-do:
 
+- mysql原理
+- 看java guide是否有必要看
+- spring mvc请求参数匹配原理
+- mybatis中mapper xml中为什么要写resultType?什么情况下不写会出错?
+- 理解前后端分离，理解使用JSP、Thymeleaf、CDN提供的vue以及本地vue的区别
+- 记录全局异常处理器的笔记，理解@ExceptionHandler的原理
+- 为什么position:absolute的元素的位置会相对于带position:relative的上级元素？
 - 为什么需要redo log来恢复物理数据页，而不能只用binlog来恢复，除了效率问题之外有其他原因吗？
 - 看猎才mysql文档
 - ConcurrentHashMap的源码
@@ -39,6 +46,9 @@ https://it38nc4nte.feishu.cn/docx/SbB1dOAaJofDS2xHPPMcmyEWnEc
 
 Spring
 https://it38nc4nte.feishu.cn/docx/H6VzdpNvHo0lutxqraWcBKVBnNd
+
+MyBatis
+https://it38nc4nte.feishu.cn/docx/LLhgdSwvUoVcgCx5hf8c6fNmn75
 
 工作项目峰会参考
 https://it38nc4nte.feishu.cn/docx/KYgzdjpggolIBuxCdtMc4II2nmc

@@ -1,5 +1,19 @@
 # Intellij Idea
 
+## Mac
+
+opt + enter: show suggestions
+cmd + n: generate ...
+cmd + o: search classes
+cmd + shift + o: search files
+cmd + b: go to definition or usages
+cmd + opt + b: go to implementation
+(custom) ctrl + shift + i, enter: reveal current file in project view
+(custom) ctrl + shift + i, c: reveal current file in Finder
+(custom) ctrl + shift + c: copy reference
+
+## Windows
+
 plugins:
 - ideavim
 - acejump
