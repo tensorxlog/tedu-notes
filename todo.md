@@ -1,5 +1,16 @@
+# inbox
+陈恒课程day09 ~ day12思维导图已记完
+
 # to-do:
 
+- 通过阅读Spring的源码了解Bean的创建和获取过程是怎么样的
+- 为什噩梦Redis包含16个数据库
+- Redis是如何与MySQL同步的
+- 使用Redis+JWT保存登录信息相对于使用session而言有什么优点
+- 更全面了解内部类和注解的定义
+- Java类型转换的底层原理
+- 什么时候即使使用了索引，查询速度仍旧比较慢？
+- Nginx有什么作用，怎么配置与应用？
 - mysql原理
 - 看java guide是否有必要看
 - spring mvc请求参数匹配原理
@@ -50,6 +61,18 @@ https://it38nc4nte.feishu.cn/docx/H6VzdpNvHo0lutxqraWcBKVBnNd
 MyBatis
 https://it38nc4nte.feishu.cn/docx/LLhgdSwvUoVcgCx5hf8c6fNmn75
 
+互联网架构
+https://yscp0bp3g6.feishu.cn/docx/M302d8B0bogziBxZPWjcS3ZhnZb
+
+Linux:
+https://yscp0bp3g6.feishu.cn/docx/ZYMSdetTdo7qVXxCiRoc0RNLnCW
+
+Linux环境项目直接部署
+https://yscp0bp3g6.feishu.cn/docx/YqCZdjXxLoIiUtxQCaIcy0kSnse
+
+Linux环境项目部署Gitee:
+https://gitee.com/JasonCN2008/jht
+
 工作项目峰会参考
 https://it38nc4nte.feishu.cn/docx/KYgzdjpggolIBuxCdtMc4II2nmc
 
@@ -59,23 +82,41 @@ https://it38nc4nte.feishu.cn/docx/Vow3dkjxwoZSODxclwsc6Ur6nqg
 前端课程repository:
 https://gitee.com/IvanLiuGB/jsd-06-03-teacher.git
 
-temp
 ---
-服务器收到请求后将其交给DispatcherServlet进行处理，DispatcherSevlet会调用HandlerMapping来根据请求路径找到对应的handler,HandlerMapping将handler执行链(简单版是controller,什么是handler执行链?)返回给DispatcherServlet，
-然后DispatcherServlet调用HandlerAdapter，让其执行handler，而HandlerAdapter会调用Handler去执行handler(为什么不是HandlerAdapter或者Handler直接执行handler？)，
-Handler执行完后返回一个ModelAndView(什么是ModelAndView以及View?)，然后DispatcherServlet让ViewResolver去解析视图，并返回View，然后再让模板引擎去渲染视图，最后返回响应。
+Java开发招聘要求：
+- 掌握Java基础
+- 熟练掌握常用设计模式，具备通过良好的结构设计和领域建模来支撑复杂业务的能力
+- 熟悉JVM
+- SQL性能调优
+- Spring、MyBatis、Redis
+- 了解tomcat、spring等开源产品的原理
+- 熟悉分布式、缓存、消息等机制
+- 熟悉微服务框架和Spring Cloud
+- 高并发、高性能的分布式系统的设计及应用、调优
 
-handler指可以处理请求的组件,可以是controller，也可以是带@RequestMapping等注解的方法。
-HandlerExecutionChain包含一个handler以及多个拦截器构成的执行链。
-拦截器可以在请求被handler处理前进行预处理或者请求被handler处理后进行额外处理，其进行的处理包括授权，日志记录以及修改请求和响应等。
 
-HandlerAdapter使用了适配器模式，它有几个子类，每个子类都是适配某一种类型的控制器，有了HandlerAdapter，你只需要调用handle方法，屏蔽了不一致的细节，否则在DispatcherServlet里面要if else if else了
+---
+Java基础：复习笔记
+反射：复习笔记，查看Spring源码中对反射的应用
+动态代理：查看Spring源码中对动态代理的应用
+JVM内存结构、多线程：看《深入理解Java虚拟机》
+设计模式：廖雪峰的网站，网上搜索每个设计模式的实际应用
+MySQL：看《从根上理解MySQL》
+Spring：看Java Guide，以及官方文档？
+MyBatis：看Java Guide
+数据结构：网上搜索优质文章
 
+对学到的知识点，需要想想工作中哪里会用到，即应用场景，比如arraylist，hashmap等工作中是怎么用的。
 
-HandlerMapping根据请求路径找到handler（handler method?）然后将执行链返回给DispatcherServlet，但由于有多种多样的handler，调用它们的接口各不相同，所以并不是由DispatcherServlet直接调用handler的方法，而是使用了适配器模式，为每种handler定义一个HandlerAdapter适配器，于是DispatcherServlet根据handler的类型找到合适的HandlerAdapter来执行handler。
+---
+分库分表(比如将不同业务的数据放到不同数据库)，ShardingSphere中间件
+反向代理，请求分发到不同服务器，Nginx
+Redis
 
-View接口使用render来渲染页面：
-void render(@Nullable Map<String,?> model, HttpServletRequest request, HttpServletResponse response)
+---
+在MySQL命令行导入SQL语句：
+`source <sql-file>`
 
-ModelAndView中封装了view以及Map<String, ?>类型的model
+---
+2023-10-10: 活动课，《简历制作》-PartA
 

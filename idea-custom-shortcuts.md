@@ -7,10 +7,12 @@ cmd + n: generate ...
 cmd + o: search classes
 cmd + shift + o: search files
 cmd + b: go to definition or usages
+(custom) cmd + shift + b: find usages
 cmd + opt + b: go to implementation
 (custom) ctrl + shift + i, enter: reveal current file in project view
 (custom) ctrl + shift + i, c: reveal current file in Finder
 (custom) ctrl + shift + c: copy reference
+(custom) cmd + shift + 0: restore default layout
 
 ## Windows
 
@@ -57,6 +59,10 @@ alt + 7
 `ctrl + alt + l`
 
 HTML标签名打完后按tab可以自动补全
+
+设置中设置自动导包：
+
+Editor -> Auto Import -> Add unambiguous imports on the fly
 
 # Vim
 

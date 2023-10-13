@@ -260,6 +260,8 @@ Maven项目结构:
 
 maven-project
 ├── pom.xml
+├── mvnw
+├── mvnw.cmd
 ├── src
 │   ├── main
 │   │   ├── java
@@ -268,6 +270,7 @@ maven-project
 │       ├── java
 │       └── resources
 └── target
+
 
 其中pom.xml类似于下面这样：
 ```
@@ -428,3 +431,147 @@ new SimpleDateFormat("/yyyy/MM/dd/")
 ---
 mac自定快捷键：
 合并所有窗口: ctrl + shift + cmd + u
+
+temp
+---
+服务器收到请求后将其交给DispatcherServlet进行处理，DispatcherSevlet会调用HandlerMapping来根据请求路径找到对应的handler,HandlerMapping将handler执行链(简单版是controller,什么是handler执行链?)返回给DispatcherServlet，
+然后DispatcherServlet调用HandlerAdapter，让其执行handler，而HandlerAdapter会调用Handler去执行handler(为什么不是HandlerAdapter或者Handler直接执行handler？)，
+Handler执行完后返回一个ModelAndView(什么是ModelAndView以及View?)，然后DispatcherServlet让ViewResolver去解析视图，并返回View，然后再让模板引擎去渲染视图，最后返回响应。
+
+handler指可以处理请求的组件,可以是controller，也可以是带@RequestMapping等注解的方法。
+HandlerExecutionChain包含一个handler以及多个拦截器构成的执行链。
+拦截器可以在请求被handler处理前进行预处理或者请求被handler处理后进行额外处理，其进行的处理包括授权，日志记录以及修改请求和响应等。
+
+HandlerAdapter使用了适配器模式，它有几个子类，每个子类都是适配某一种类型的控制器，有了HandlerAdapter，你只需要调用handle方法，屏蔽了不一致的细节，否则在DispatcherServlet里面要if else if else了
+
+
+HandlerMapping根据请求路径找到handler（handler method?）然后将执行链返回给DispatcherServlet，但由于有多种多样的handler，调用它们的接口各不相同，所以并不是由DispatcherServlet直接调用handler的方法，而是使用了适配器模式，为每种handler定义一个HandlerAdapter适配器，于是DispatcherServlet根据handler的类型找到合适的HandlerAdapter来执行handler。
+
+View接口使用render来渲染页面：
+void render(@Nullable Map<String,?> model, HttpServletRequest request, HttpServletResponse response)
+
+ModelAndView中封装了view以及Map<String, ?>类型的model
+
+---
+设计模式：
+
+简单工厂模式：
+简单工厂模式是在工厂类的静态方法中根据不同参数返回不同对象，这些对象的类型可以是继承自同一个类的不同子类。
+
+工厂模式：
+工厂模式提供了一个用于创建对象的接口，不同的实现类有不同的创建对象的方式，每个实现类相当于一个简单工厂。
+
+单例模式：
+单例模式是指对于某个类，在程序运行期间只允许创建它的一个对象，并且提供一个公有的静态方法来获取该对象。
+在实现单例模式时需要进行以下操作：
+- 将构造方法变为私有的
+- 有一个静态的私有字段用于保存单例
+- 创建一个公有的静态方法用于返回单例
+
+适配器模式：
+适配器模式是指将一个接口，比如说A接口，的对象转换为B接口，并且仍旧拥有它原先的功能，这样就可以适配那些需要B接口的场合。
+实现方式如下：
+- 实现目标接口
+- 内部持有一个待转换接口的引用
+- 在目标接口的实现方法内部，调用待转换接口的方法
+
+
+---
+Vim删除空行：
+```
+:g/^$/d
+```
+---
+面试的时候一般会分为四个阶段来问：
+
+- 你知道 xxx 吗？你用过 xxx 吗？（一问看你有没有接触过，一般没接触过就不会问这个方向了）
+- 你在日常开发的过程中是如何使用 xxx 的呢？（再次判断你有没有接触过，如果你能回答上来应用场景，才会继续向下问，不然面试官就认为你在扯皮）
+- 那你知道 xxx 的原理吗？（问你原理就是判断你私下来有没有研究过这个东西，可以回答 xxx 的工作机制是怎样的，比如线程池的原理，你就可以回答线程池的工作机制）
+- 最后还可能会问你更细一些的问题，比如 HashMap 的 put 过程是怎样的？（这个就需要熟悉源码了）
+
+---
+Intellij Idea中用JavaDoc生成文档：Tools -> Generate JavaDoc...
+如果出现中文乱码问题，可以在对话框的“Command line arguments”部分加上该参数：`-encoding utf-8 -charset utf-8`.
+
+---
+通用的策略：
+使用缓存（比如数据库缓存、磁盘复制文件用缓存、浏览器缓存、CPU缓存、IO缓冲流、StringBuilder相当于使用了缓存）
+使用有序结构的二分查找进行搜索（比如数据库页目录对数组使用了二分法）
+如果数据在物理上无法按照合理的顺序来排列，可以将每个数据封装为一个链表的节点，使用链表来记录它们的顺序（比如MySQL的InnoDB引擎中页内的记录以及各个页都是通过链表按照主键顺序进行连接的）
+
+---
+MySQL中同时导入多个sql：
+`mysql tea_mall -uroot -p < *.sql`
+
+---
+Find all Java versions:
+`/usr/libexec/java_home -V`
+
+---
+vim-fugitive:
+
+Diff between current file and the index
+:Gdiff :0
+
+Diff between current file and current file 3 commits ago:
+:Gdiff ~3
+
+---
+Use `git stash` to stash the current changes before pulling from remote and use `git stash pop` to add the stash back in to the working directory after pulling from remote.
+
+---
+适配器模式在SpringSecurity应用中的一种使用：
+SecurityContext中的Authentication的实现类UsernamePasswordAuthenticationToken的构造方法的第三个参数类型是`Collection<? extends GrantedAuthority>`，如果自定义的权限列表类型是`List<String>`，那么就需要进行类型转换，而SpringSecurity提供了SimpleGrantedAuthority实现类，可以将字符串传入该类的构造方法获取转换后的对象，这里就应该是用到了适配器模式。
+
+---
+摘自MyBatis文档，提到了request scope：
+If you're using a web framework of any sort, consider the SqlSession to follow a similar scope to that of an HTTP request. In other words, upon receiving an HTTP request, you can open a SqlSession, then upon returning the response, you can close it.
+
+Dependency Injection frameworks can create thread safe, transactional SqlSessions and mappers and inject them directly into your beans so you can just forget about their lifecycle. You may want to have a look at MyBatis-Spring or MyBatis-Guice sub-projects to know more about using MyBatis with DI frameworks.
+
+---
+10-09串讲讲了依赖注入等
+
+---
+对controller方法的参数加上validation框架的约束时（比如@Range(...)），knife4j中显示会有问题，此时可以在参数前再加上@RequestParam来解决。
+
+---
+session的缺点：
+- 不适合存储大量数据
+- 不适合用于集群和分布式系统
+- 不适合长时间保存数据
+
+---
+Tomcat（Spring MVC默认使用Tomcat作为Web服务器）中HttpSession的标准实现类是StandardSession，其内部用一个ConcurrentHashMap存储数据。而管理session的接口是Manager，其标准实现类是StandardManager（继承自抽象类ManagerBase。ManagerBase是Manager接口的minimal implementation，不支持将session持久化或者应用到分布式系统），用一个ConcurrentHashMap存储所有的session，map的键即session id，值为session。
+
+---
+经常说的“List有序”是指List（实现类）具有某种线性的结构（内存中按相邻的地址排列、链表中由一个节点指向另一个节点等等），而不是指其中的元素按大小顺序来排列。这种有序性是在List接口中规定的，比如List#toArray()方法要求返回的元素按它们原先的指标顺序排列，而Set接口并没有这种要求，所以经常可以听到“Set是无序的”这种说法。Set的这种说法其实是不准确的，严格的表述应该是“Set不需要是有序的”。另外，“List的元素可以重复”这种说法也是不准确的，因为List接口本身没有这种强制规定，只能说在通常情况下List的元素是可以重复，但也可以自己实现一个禁止重复元素的实现类（比如在检测到重复元素时抛出异常）。
+
+---
+为什么权限放在redis：如果根据JWT中的ID去数据库查找权限的话速度太慢，如果直接放到JWT中的话JWT的数据太大，而且不安全，并且其中保存的有些数据可能会由于被修改过而已经过期了（相应的，这种情况Redis的优势在与它是跟关系型数据库进行同步的）。
+
+---
+类DefaultListableBeanFactory内部用一个ConcurrentHashMap来存储Bean:
+```java
+	/** Map of bean definition objects, keyed by bean name. */
+	private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<>(256);
+```
+
+- 对于ClassPathXmlApplicationContext，其DefaultListableBeanFactory是存储在它的一个父类AbstractRefreshableApplicationContext里的
+- 对于AnnotationConfigApplicationContext，其DefaultListableBeanFactory是存储在其父类GenericApplicationContext里的
+
+---
+axios框架发送请求时默认不会携带请求头，如果需要配置请求头，使用
+```javascript
+let newAxios = axios.create({
+        'headers': {
+            ...
+        }
+});
+```
+
+----
+UserService#login:
+验证用户名和密码并返回用户的信息,如验证通过，将账号禁用状态和用户权限存入redis
+
+
