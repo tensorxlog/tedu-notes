@@ -1,8 +1,12 @@
 # inbox
-陈恒课程day09 ~ day12思维导图已记完
+陈恒课程day01 ~ day16思维导图已记完
+当前课程day04, day05（除dubbo高级特性以外）已记完
 
 # to-do:
 
+- alibaba sentinel @SentinelResource的原理
+- 跨域问题一定是由前端的异步请求引发的吗
+- 了解一般讲述项目时应该讲哪些方面，然后对已经学过的项目做相应的准备
 - 通过阅读Spring的源码了解Bean的创建和获取过程是怎么样的
 - 为什噩梦Redis包含16个数据库
 - Redis是如何与MySQL同步的
@@ -42,6 +46,10 @@
 - k8s
 
 ---
+面试真题:
+https://a0d32fgj7nu.feishu.cn/docx/NfjgdhYDZoBdUux6oSBcbaNgn6e
+
+---
 mysql manual:
 https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html
 
@@ -72,6 +80,13 @@ https://yscp0bp3g6.feishu.cn/docx/YqCZdjXxLoIiUtxQCaIcy0kSnse
 
 Linux环境项目部署Gitee:
 https://gitee.com/JasonCN2008/jht
+
+Docker技术应用
+https://yscp0bp3g6.feishu.cn/docx/IuNdd9vKFonuSVxzCGHcaSq6njh
+
+Redis:
+https://yscp0bp3g6.feishu.cn/docx/A0sPdnjHFoKaaSxJeFicXDLAnag
+- Redis的AOF持久化
 
 工作项目峰会参考
 https://it38nc4nte.feishu.cn/docx/KYgzdjpggolIBuxCdtMc4II2nmc

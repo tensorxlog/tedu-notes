@@ -1,3 +1,59 @@
+# 各阶段git地址
+
+## 第二阶段，王伟超
+
+notes:
+jsd2306-ssm-teacher
+https://gitee.com/teduwang/jsd2306-ssm-teacher.git
+
+## 第三阶段，刘国斌
+
+notes:
+jsd-06-03-teacher
+https://gitee.com/IvanLiuGB/jsd-06-03-teacher.git
+
+2306-vue-baking-teacher
+https://gitee.com/IvanLiuGB/2306-vue-baking-teacher.git
+
+## 第四阶段，成恒
+
+notes:
+jsd2306-tmall-server-teacher
+https://gitee.com/chengheng2022/jsd2306-tmall-server-teacher.git
+
+jsd2306-tmall-client-admin-teacher
+https://gitee.com/chengheng2022/jsd2306-tmall-client-admin-teacher.git
+
+tmall-server-repo
+https://gitee.com/chengheng2022/tmall-server-repo.git
+
+tmall-client-front-repo
+https://gitee.com/chengheng2022/tmall-client-front-repo.git
+
+tmall-client-admin-repo
+https://gitee.com/chengheng2022/tmall-client-admin-repo.git
+
+## 第五阶段，肖旭伟
+
+notes:
+jsd2306-notes
+https://gitee.com/xiaolaoshi2021/jsd2306-notes.git
+
+jsd2306-luban-demo
+https://gitee.com/xiaolaoshi2021/jsd2306-luban-demo.git
+
+## 智能充电桩项目
+
+张九军
+13691481018
+
+notes:
+https://gitee.com/jiujun/jsdtn2306.git
+
+---
+讲台电脑ftp地址：ftp://176.17.0.25
+
+
 ---
 猎才MySQL文档URL：
 https://yscp0bp3g6.feishu.cn/docx/Dv0kdkOmdofUhDx53VNch8mpnHg
@@ -574,4 +630,57 @@ let newAxios = axios.create({
 UserService#login:
 验证用户名和密码并返回用户的信息,如验证通过，将账号禁用状态和用户权限存入redis
 
+
+---
+Mac上安装Java 8:
+`brew install --cask homebrew/cask-versions/adoptopenjdk8`
+
+---
+Maven中配置模块的JDK版本（这样配置后就无法通过IDEA的UI界面来更改JDK的版本）：
+```xml
+<properties>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+```
+
+---
+idea中对于同一个项目在不同端口开启多个实例的方法：
+编辑"Run/Debug Configurations" (可通过双击shift搜索)，选中模块名称，点击"Modify options"，在下拉列表中勾选"Override configuration properties"，然后在"Override configuration properties"处配置端口号：
+name: server.port
+value: <port>
+
+---
+RPC远程调用：假设客户端想调用服务端的Service接口实现类ServiceImpl的remoteMethod方法，那么客户端处需要先创建一个Service接口的实现类，然后在remoteMethod方法中将参数传给服务器，服务器收到参数后调用ServiceImpl的remoteMethod方法并将结果返回给客户端，客户端再将该结果作为Service实现类的remoteMethod方法的返回值。
+
+---
+Spring Gateway过滤器官方文档：
+https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-stripprefix-gatewayfilter-factory
+
+---
+duplicate a mysql database:
+```shell
+$ mysqldump original-database-name -u user -ppassword > dump.sql
+$ echo "create database target-database-name" | mysql -u user -ppassword
+$ mysql target-database-name -u user -ppassword < dump.sql
+```
+---
+对于某个知识点的理解可以参考我对于JDK、JRE的理解
+
+---
+rocketmq相关程序启动命令：
+rocketmq服务器：
+```shell
+$ mqnamesrv
+```
+mqbroker:
+```shell
+$ mqbroker
+```
+
+仪表盘：
+```shell
+$ java -jar rocketmq-dashboard-1.0.1-SNAPSHOT.jar --server.port=9999 --rocketmq.config.namesrvAddr=localhost:9876
+```
 

@@ -7,12 +7,19 @@ cmd + n: generate ...
 cmd + o: search classes
 cmd + shift + o: search files
 cmd + b: go to definition or usages
-(custom) cmd + shift + b: find usages
 cmd + opt + b: go to implementation
+cmd + shift + ], cmd + shift + [: switch project tabs
+cmd + enter: in database tool view, this shortcut opens the table
+(custom) cmd + shift + b: find usages
 (custom) ctrl + shift + i, enter: reveal current file in project view
 (custom) ctrl + shift + i, c: reveal current file in Finder
 (custom) ctrl + shift + c: copy reference
+(custom) ctrl + shift + n: refactor -> rename
 (custom) cmd + shift + 0: restore default layout
+(custom) cmd + shift + 9: open database tool view (then use `cmd + enter` to open table, use `shift + enter` to edit table DDL create statement)
+(custom) cmd + ctrl + shift + b: add/delete bookmark
+
+Database table diagrams can be copied to other apps by using cmd + c
 
 ## Windows
 
