@@ -10,6 +10,7 @@ cmd + b: go to definition or usages
 cmd + opt + b: go to implementation
 cmd + shift + ], cmd + shift + [: switch project tabs
 cmd + enter: in database tool view, this shortcut opens the table
+cmd + up arrow: navigation
 (custom) cmd + shift + b: find usages
 (custom) ctrl + shift + i, enter: reveal current file in project view
 (custom) ctrl + shift + i, c: reveal current file in Finder

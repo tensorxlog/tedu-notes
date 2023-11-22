@@ -49,6 +49,13 @@ https://gitee.com/xiaolaoshi2021/jsd2306-luban-demo.git
 
 notes:
 https://gitee.com/jiujun/jsdtn2306.git
+(`讲义.md`中记录了飞书文档的地址)
+
+课前资料（猎才智慧充电桩项目）：
+https://pan.baidu.com/s/1wmbOEJySL4XeU9zaWG5Gmw?pwd=8888
+Mac vmware等软件下载：
+https://pan.baidu.com/s/166ncIEtOh0Xh5LW8nM7XVw?pwd=8888
+
 
 ---
 讲台电脑ftp地址：ftp://176.17.0.25
@@ -676,11 +683,154 @@ $ mqnamesrv
 ```
 mqbroker:
 ```shell
-$ mqbroker
+$ mqbroker -n localhost:9876
 ```
 
 仪表盘：
 ```shell
 $ java -jar rocketmq-dashboard-1.0.1-SNAPSHOT.jar --server.port=9999 --rocketmq.config.namesrvAddr=localhost:9876
 ```
+
+---
+service provider configuration file:
+`META-INF/services/<full-qualified-name-of-service-interface>`
+
+---
+fugitive command:
+
+run normal git commands:
+`:Git <normal git commands, like add, log, ...>`
+
+diff the staged version of the current file with the one in the working directory:
+`:GdiffSplit`, `:Gvdiffsplit`
+
+push to remote asynchronously:
+`:Git! push`
+
+---
+什么是SPI:
+服务方提供接口，调用方提供接口的实现类，创建一个指明接口和实现类的配置文件，然后通过ServiceLoader发现接口的所有实现类，进行相应的处理。
+
+配置文件文件名为接口的权限定名，内容为实现类的权限定名（可以有多个），文件存放在resources/META-INF/services/路径下。
+通过ServiceLoader的`static <S> ServiceLoader<S> load(Class<S> service)`方法获取接口的所有实现类。
+
+---
+如何计算并发能力
+
+---
+视频回放
+- 2023-11-02, 11:36, rocketmq消息丢失完整回答
+- 2023-11-08, 11:25, redis的缓存雪崩、一致性问题等
+- 2023-11-09, 10:02, 讲时序图
+- 2023-11-14, 16:00, 常见面试问题参考
+
+
+---
+关于maven的一个问题记录：
+达内私服（使用http协议）的依赖被阻止而无法下载，后来从网上搜到其原因为Maven 3.8.1开始默认阻止http连接，需要在settings.xml配置文件中删除以下设置：
+
+```xml
+<mirror>
+  <id>maven-default-http-blocker</id>
+  <mirrorOf>external:http:*</mirrorOf>
+  <name>Pseudo repository to mirror external repositories initially using HTTP.</name>
+  <url>http://0.0.0.0/</url>
+</mirror>
+```
+但我的配置文件（~/.m2/settings.xml）中根本没有包含这种设置，后来才知道是因为IDEA还有一个全局的settings.xml配置文件，会先读取全局文件，然后再读取用户配置。
+
+---
+查看是否有Maven相关的问题：
+`$ mvn clean compile -X`
+
+---
+iTerm2使用设计：
+- 创建从ranger打开某个idea项目的快捷方式
+- 更改ranger中某些类型文件的默认打开程序，比如pdf，doc
+- 如何快速打开某个文本文件：定位某个文件，用快捷方式拷贝其路径，然后在iTerm的另一个标签页的vim程序中打开
+
+---
+实现InitializingBean，重写afterPropertiesSet方法: 在bean对象创建后Spring自动调用afterPropertiesSet方法
+
+---
+项目中遇到的问题，比如可以说幂等相关的问题
+
+
+---
+准备面试记录：
+微服务方面：注册中心，网关，RPC等如何使用、其功能是如何实现的
+
+基础知识方面：
+还需要了解锁的底层原理（synchronized的实现，ReentrantLock的AQS实现等），锁升级降级等
+
+项目方面：
+- 充电桩项目：不知道“所涉技术”下面列表所列举的功能是自己做的还是其他人做的；责任描述应该加上技术方面的细节，即自己使用什么技术实现了什么功能
+- 无忧安装的项目简介没问题，但责任描述太简单了
+- 解茶网的责任描述还可以，但我自己觉得最好再加上技术方面的描述
+总结：项目简介参考无忧安装，责任描述参考解茶网，项目与公司需要匹配，并且需要熟悉责任描述中的所有实现细节。
+
+项目描述方面：
+可以类比线程池的工作流程来讲解项目，所以应该跟当前鲁班上门项目笔记中说的需求描述是类似的，只是再加上更多的技术实现细节。
+
+一分钟介绍重点业务和技术，通过业务讲技术
+
+面试官可能会问各种数据是用什么结构实现的（比如智能充电桩项目中车辆位置等是用什么数据结构存储的），所以需要熟悉项目中的各种技术细节
+
+---
+面试辅导老师讲解如何准备以及应对面试这一点我没想到该怎么描述，其实可以用“梳理”这个词，参考这一个例子想想为什么我总是想不到描述词
+
+---
+注册流程：
+前端将用户名、密码等信息传入后端，后端将密码转换成散列值并存储注册信息。
+
+登录流程：
+前端将用户名、密码等信息传入后端，后端将密码转换成散列值并与数据库中存储的值进行比较，如果相同则登录成功，根据登录信息生成JWT，将其返回给前端。
+
+认证流程：
+前端发送的请求携带有JWT，过滤器从JWT中读取登录信息，将其存入SecurityContext（以使得该session的其他方法也可以获取登录信息），然后将JWT对应的json字符串存入请求头后将请求传递下去？
+
+---
+MySQL的SQL语句中每个select子句都需要有alias
+where语句会在窗口函数之前执行？
+
+---
+使用ripgrep在特定文件中查找内容：
+`rg "<keyword>" --glob "<file-name-glob>"`
+
+---
+Spring注解常见的ElementType（可以添加注解的位置）：
+- `TYPE`: 类、接口（包括注解类型的接口）、枚举类上方
+- `FIELD`: 字段声明上方
+- `METHOD`: 方法声明上方
+- `CONSTRUCTOR`: 构造器声明上方
+- `PARAMETER`: 方法参数前方
+- `LOCAL_VARIABLE`: 局部变量声明上方
+- `ANNOTATION_TYPE`: 注解类型接口的声明上方
+- `PACKAGE`: 包声明上方
+- `TYPE_PARAMETER`: 类型参数声明前方
+
+---
+虚拟机桥接：
+通过虚拟交换机技术，使用host机器的物理网卡分配IP地址（虚拟机有自己的MAC地址），与host处于同一个网段，如果动态分配IP的话，使用同一个DHCP服务器分配IP地址
+
+---
+使用mvn删除target文件夹，然后编译并打包（打好的包默认放在target文件夹）
+`mvn clean package`
+
+使用mvn删除target文件夹，然后编译、打包并将打好的包放到maven的本地仓库
+`mvn clean install`
+
+---
+.gitignore格式：
+- 一行开头的#表示注释
+- 如果匹配模式的开头或中间包含"/"，则它是相对于当前路径的，否则它可以匹配当前路径下的任意层级
+- 如果匹配模式的结尾为"/"，则它只能匹配路径，否则也可以匹配文件
+- "*"匹配不包含"/"的任意字符串，"?"匹配除"/"以外的任意单个字符，"**"匹配任意字符串
+
+---
+断言的语法：`assert <condition>;`（为了启用断言，还需要在运行程序时加上参数`-enableassertions`，或简写为`-ea`），表示程序运行到该行时需要对`<condition>`进行判断，只有结果为true才能继续向下执行，如果为false，则会抛出AssertionError错误。断言只应该用在开发和测试环节。
+
+---
+MySQL查看默认启动参数(即my.cnf中的配置)：
+`mysqld --print-defaults`
 

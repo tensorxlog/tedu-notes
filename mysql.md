@@ -179,6 +179,37 @@ WHERE help_category.help_category_id IN (
 - `dense_rank() over (partition by <col1> order by <col2>[ desc])`:
 - `row_number() over (partition by <col1> order by <col2>[ desc])`:
 
+示例：
+有一个员工表dept_emp简况如下:
+emp_no dept_no from_date to_date
+10001	d001 1986-06-26	9999-01-01
+10002	d001 1996-08-03	9999-01-01
+10003	d002 1996-08-03	9999-01-01
+
+有一个薪水表salaries简况如下:
+emp_no salary from_date to_date
+10001 88958	2002-06-22 9999-01-01
+10002 72527	2001-08-02 9999-01-01
+10003 92527	2001-08-02	9999-01-01
+
+获取每个部门中当前员工薪水最高的相关信息，给出dept_no, emp_no以及其对应的salary，按照部门编号dept_no升序排列，以上例子输出如下:
+dept_no emp_no maxSalary
+d001	10001 88958
+d002	10003 92527
+
+解答：
+```sql
+select dept_no, emp_no, salary as maxSalary from (
+select dept_no, e.emp_no, salary, dense_rank() over (partition by dept_no order by salary desc) as ranking
+from dept_emp e join salaries s
+on e.emp_no = s.emp_no
+) as t
+where ranking = 1
+order by dept_no
+```
+
+如何删除某个字段重复的记录?
+
 命名窗口:
 ```sql
 select <window-function> over <window-name> from <table>

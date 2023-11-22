@@ -1,9 +1,38 @@
 # inbox
 陈恒课程day01 ~ day16思维导图已记完
-当前课程day04, day05（除dubbo高级特性以外）已记完
+当前课程day01, day02, day03, day04, day05（除dubbo高级特性以外）, day06, day08已记完
+
+day02: Nacos简介、分级管理、微服务集群配置
+day03: Nacos配置中心
+day04: Dubbo简介
+day04-NIGHT: Redis哨兵集群
+day05: Dubbo高级特性（负载均衡、重试机制），Spring Boot自动配置
+day06: 创建Spring Boot自动配置类，Spring Cloud Gateway各种断言、解析请求的流程、运行原理
+day07: 网关配置跨域，网关过滤器
+day07-NIGHT: Redis持久化
+day08: Sentinel、熔断、限流
+day09: 从Nacos读取Sentinel规则，使用注解定义资源
+day10: RocketMQ核心概念和运行原理
+day11: RocketMQ结合业务使用（异步解耦、削峰填谷），消息丢失，消息重复消费，幂等设计
+day12: 分布式锁
+后面的都是跟项目相关
+day15: 鲁班上门的缓存方案和流程，数据一致性问题
+day16: 缓存雪崩、缓存穿透和缓存击穿
 
 # to-do:
 
+- 将鲁班项目及其依赖（有些在达内服务器上）下载保存
+- 复习redis, nacos, dubbo, spring gateway, sentinel, rocketmq的笔记（8小时）
+- 学习mysql的性能优化（4小时）
+- 11.18: 参照第五阶段老师的几次面试回答示范进行练习
+- 修改简历（8小时）
+- 看官方文档的Spring事务部分
+- Spring的事务是如何通过AOP实现的
+- mybatis # 的预编译
+- Spring容器的底层创建过程
+- 分析每件事情所需的时间，预估是否有时间完成
+- 在思维导图中可以将代码的链接记录下来（代码可以放在github上），以节省空间
+- 理解异步回调函数
 - alibaba sentinel @SentinelResource的原理
 - 跨域问题一定是由前端的异步请求引发的吗
 - 了解一般讲述项目时应该讲哪些方面，然后对已经学过的项目做相应的准备
@@ -44,6 +73,14 @@
 - 熟练使用代码实现各种排序算法
 - 使用嵌套循环和外联内联的不同场合
 - k8s
+
+---
+智慧充电桩
+day06:
+https://f9viqrallh.feishu.cn/docx/PeFZd1o60o2zunxHuUAcljl0nnf
+
+充电桩相关面试题（最新版）：
+https://f9viqrallh.feishu.cn/docx/Av15dIBvRo0LmIxxSPKcfhrZnEf
 
 ---
 面试真题:
